@@ -1,5 +1,5 @@
 import { DataContextProvider } from "../context/dataContext";
-import "../styles/globals.css";
+import "tailwindcss/tailwind.css"
 import "../../node_modules/nprogress/nprogress.css"
 
 function MyApp({ Component, pageProps }) {
