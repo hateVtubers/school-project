@@ -1,41 +1,63 @@
-import useSWR from "swr";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import Nprogress from "nprogress";
 import Link from "next/link";
 import Image from "next/image";
+import useData from "../hook/useData";
 import { Card } from "../components/Card";
-
-const fetcher = (url) => fetch(url).then((res) => res.json());
+import PagesHead from "../container/PagesHead"
 
 const Home = () => {
-  const { data, error } = useSWR("/api/a", fetcher);
-  console.log(data);
+  const {
+    home: { imageUrl, link, text, title },
+  } = useData(); // destructuring, get children the of object for react context
+  const router = useRouter();
 
-  if (error) return <div>Failed to load</div>;
-  if (!data) return <div>Loading...</div>;
+  useEffect(() => {
+    const handleRouterLoading = () => {
+      Nprogress.start();
+    };
+    router.events.on("routeChangeStart", handleRouterLoading);
+    router.events.on("routeChangeComplete", () => Nprogress.done());
 
+    return () => {
+      router.events.off("routeChangeStart", () => handleRouterLoading);
+    };
+  });
   return (
-    <div>
-      <header>
-        <Link href="/">
-          <a className="flex items-center justify-center mt-5">
-            <Image
-              src="/HololiveProductionLogo.svg"
-              alt="logo"
-              width={200}
-              height={80}
-              className="mx-auto"
+    <>
+      <PagesHead></PagesHead>
+      <div>
+        <header className="h-40 grid grid-rows-2 justify-items-center gap-5">
+          <Link href="/">
+            <a className="mt-5">
+              <Image
+                src="/HololiveProductionLogo.svg"
+                alt="logo"
+                width={200}
+                height={80}
+                priority={true}
+              />
+            </a>
+          </Link>
+          <h1 className="text-center text-turquoise-blue-500 text-lg font-bold text-shadow-strong-title">
+            Is a virtual YouTuber talent agency
+          </h1>
+        </header>
+        <main className="flex items-center justify-center flex-wrap gap-5 xl:gap-10">
+          {title.map((e, i) => (
+            <Card
+              img={imageUrl[i]}
+              text={e}
+              otherText={text[i]}
+              key={e}
+              url={link[i]}
             />
-          </a>
-        </Link>
-        <h1 className="text-center text-turquoise-blue-500 text-lg font-bold text-shadow-strong-title">
-          Is a virtual YouTuber talent agency
-        </h1>
-      </header>
-      <main>
-        <Card img="url(a.webp)"></Card>
-      </main>
-    </div>
+          ))}
+        </main>
+      </div>
+    </>
   );
 };
 
 export default Home;
-/* box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38); */

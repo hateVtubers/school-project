@@ -17,32 +17,11 @@ module.exports = {
           '800': '#1091A4',
           '900': '#0C6875'
         },
-        'dodger-blue': {
-          DEFAULT: '#21C6FD',
-          '50': '#FFFFFF',
-          '100': '#EBFAFF',
-          '200': '#B9EDFE',
-          '300': '#86E0FE',
-          '400': '#54D3FD',
-          '500': '#21C6FD',
-          '600': '#02AFE9',
-          '700': '#0289B6',
-          '800': '#016384',
-          '900': '#013D51'
-        },
-        'picton-blue': {
-          DEFAULT: '#4D9FEE',
-          '50': '#FFFFFF',
-          '100': '#FFFFFF',
-          '200': '#D9EAFB',
-          '300': '#AAD1F7',
-          '400': '#7CB8F2',
-          '500': '#4D9FEE',
-          '600': '#1E86EA',
-          '700': '#136CC2',
-          '800': '#0E5294',
-          '900': '#0A3865'
-        },
+        'rushia': {
+          'title': '#828796',
+          'body': '#91f0b4',
+          'text-body': '#7e8594'
+        }
       },
       backgroundImage: {
         'card': 'linear-gradient(rgba(0, 0, 0, 0) 0px, rgb(0, 0, 0) 100%)'
@@ -51,6 +30,9 @@ module.exports = {
         'strong-title': '0px 2px 0 #21C6FD, 0 3px 0 #4D9FEE',
         'other-text': '0px 1px 0 #ffffff, 0px 3px 0 #21C6FD, 0 4px 0 #4D9FEE'
       },
+      boxShadow: {
+        'hololive': 'rgba(52, 201, 254, 0.5) -5px 5px, rgba(52, 201, 254, 0.4) -10px 10px, rgba(52, 201, 254, 0.3) -15px 15px, rgba(52, 201, 254, 0.2) -20px 20px, rgba(52, 201, 254, 0.1) -25px 25px, rgba(52, 201, 254, 0.05) -30px 30px'
+      }
     },
   },
   variants: {
