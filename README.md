@@ -1,34 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+La aplicacion web fue creada en nextJS y tailwindCSS
 
-## Getting Started
+se creo una api y se consumio una api(api consumida "https://api.holotools.app/v1/api-docs/")
 
-First, run the development server:
+para poder correr la pagina web necesitas node:
+  install node lts, porque la version experimental tiene problemas con webpack
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+lts = https://nodejs.org/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+git clone "https://github.com/Hate-vtubers/school-project" // copia el repositorio
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+despues de instalar node ejecute los siguientes comandos en la terminal dentro de la carpeta del proyecto
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+npm install // instala package y dependencias de la pagina
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+npm run dev // inicia la pagina en un servidor de desarrollo, por defecto es: http://localhost:3000/ // este servidor solo estara activo mientras npm run dev este activo en la terminal
