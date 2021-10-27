@@ -2,8 +2,7 @@ La aplicacion web fue creada en nextJS y tailwindCSS
 
 se creo una api y se consumio una api(api consumida "https://api.holotools.app/v1/api-docs/")
 
-para poder correr la pagina web necesitas node:
-  install node lts, porque la version experimental tiene problemas con webpack
+para poder correr la pagina web necesitas node(install node lts), porque la version experimental tiene problemas con webpack
 
 lts = https://nodejs.org/
 
