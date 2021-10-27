@@ -1,17 +1,20 @@
 import useData from "../../hook/useData";
 import Header from "../../container/Header";
 import { TextCard } from "../../components/textCard";
-import PagesHead from "../../container/PagesHead"
+import PagesHead from "../../container/PagesHead";
+import { Loading } from "../../components/Loading"
 
 const Hololive = () => {
-  const { whatIsHololive: { info } } = useData();
+  const { data, error } = useData();
+
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <Loading />;
+  const { whatIsHololive: { info } } = data
   return (
     <>
       <PagesHead></PagesHead>
       <Header></Header>
-      <div
-        className="w-full h-screen bg-cover bg-center a"
-      >
+      <div className="w-full h-screen bg-cover bg-center a">
         <main className="w-5/6 z-10 absolute left-0 bottom-0 right-0 mx-auto rounded-lg bg-rushia-body py-3">
           {info.map((e) => (
             <TextCard key={e[0]} title={e[0]} text={e[1]}></TextCard>

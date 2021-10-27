@@ -1,10 +1,18 @@
 import Header from "../../container/Header";
 import useData from "../../hook/useData";
 import Image from "next/image";
-import PagesHead from "../../container/PagesHead"
+import PagesHead from "../../container/PagesHead";
+import { Loading } from "../../components/Loading";
+import holoGuardian from "../../../public/c.webp";
 
 const Collab = () => {
-  const { hololiveCollab: { text } } = useData();
+  const { data, error } = useData();
+
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <Loading />;
+
+  const { hololiveCollab: { text } } = data;
+
   return (
     <>
       <PagesHead></PagesHead>
@@ -26,12 +34,12 @@ const Collab = () => {
           </a>
           <div>
             <Image
-              src="/c.jpg"
+              src={holoGuardian}
               alt="a"
-              layout="intrinsic"
               className="bg-cover bg-center mx-auto block"
               width={1000}
               height={500}
+              placeholder="blur"
               priority={true}
             />
           </div>

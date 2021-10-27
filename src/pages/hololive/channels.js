@@ -28,7 +28,7 @@ const Generation = ({ holoApi }) => {
                 className="bg-cover bg-center rounded-t"
                 width="192%"
                 height="192%"
-                priority={true}
+                blurDataURL
               />
               <h2 className="text-center text-shadow-other-text text-white">
                 {e.name}
@@ -49,12 +49,8 @@ const Generation = ({ holoApi }) => {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch(
-    "https://api.holotools.app/v1/channels?offset=0&limit=50"
-  ).then((r) => r.json());
-  const r = await fetch(
-    "https://api.holotools.app/v1/channels?offset=50&limit=19"
-  ).then((r) => r.json());
+  const res = await fetch("https://api.holotools.app/v1/channels?offset=0&limit=50").then((r) => r.json());
+  const r = await fetch("https://api.holotools.app/v1/channels?offset=50&limit=19").then((r) => r.json());
 
   const holoApi = [...res.channels, ...r.channels];
 

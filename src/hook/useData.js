@@ -1,13 +1,12 @@
-import { useContext } from "react";
-import { DataContext } from "../context/dataContext";
+import useSWR from "swr";
 
 const useData = () => {
-  const { data: { home, whatIsHololive, hololiveAlternative, hololiveCollab } } = useContext(DataContext);
+  const fetcher = (url) => fetch(url).then((res) => res.json());
+  const { data, error } = useSWR("/api/a", fetcher);
+
   return {
-    home,
-    whatIsHololive,
-    hololiveAlternative,
-    hololiveCollab
+    data,
+    error
   };
 };
 

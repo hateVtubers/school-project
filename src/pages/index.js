@@ -1,17 +1,18 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import useSWR from "swr";
 import Nprogress from "nprogress";
 import Link from "next/link";
 import Image from "next/image";
-import useData from "../hook/useData";
 import { Card } from "../components/Card";
-import PagesHead from "../container/PagesHead"
+import PagesHead from "../container/PagesHead";
+import { Loading } from "../components/Loading";
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Home = () => {
-  const {
-    home: { imageUrl, link, text, title },
-  } = useData(); // destructuring, get children the of object for react context
   const router = useRouter();
+  const { data, error } = useSWR("/api/a", fetcher);
 
   useEffect(() => {
     const handleRouterLoading = () => {
@@ -24,6 +25,11 @@ const Home = () => {
       router.events.off("routeChangeStart", () => handleRouterLoading);
     };
   });
+
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <Loading />;
+
+  const { home: { title, text, link, imageUrl } } = data;
   return (
     <>
       <PagesHead></PagesHead>
@@ -36,7 +42,7 @@ const Home = () => {
                 alt="logo"
                 width={200}
                 height={80}
-                priority={true}
+                blurDataURL
               />
             </a>
           </Link>
@@ -61,3 +67,6 @@ const Home = () => {
 };
 
 export default Home;
+/*
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/3RxlzJWWzdY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+*/
